@@ -2,46 +2,71 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TBC Classic Countdown</title>
   <style>
     body {
-      /* Gebruik een donkere kleur als fallback */
-      background-color: #0b1e0b; 
-      /* De afbeelding - Let op: Gebruik bij voorkeur een sfeervolle landschapsfoto */
-      background-image: url('https://worldofwarcraft.blizzard.com/static/images/art/burning-crusade-classic/wallpapers/dark-portal-1920x1080.jpg');
-      background-size: 1080x1920;
-      background-position: center;
-      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      /* Geforceerd op 1080x1920 verhouding */
+      width: 100vw;
+      height: 100vh;
       
-      color: #f0ead6; /* Gebroken wit voor betere leesbaarheid */
+      background-color: #0b1e0b;
+      /* Achtergrond geoptimaliseerd voor staand formaat */
+      background-image: url('https://worldofwarcraft.blizzard.com/static/images/art/burning-crusade-classic/wallpapers/dark-portal-1080x1920.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      
+      color: #f0ead6;
       font-family: 'Georgia', serif;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
-      text-shadow: 2px 2px 10px rgba(0,0,0,0.8); /* Maakt tekst leesbaar op drukke achtergrond */
+      text-align: center;
+      overflow: hidden; /* Voorkomt scrollen op mobiel */
+    }
+
+    .container {
+      background: rgba(0, 0, 0, 0.4); /* Subtiele donkere laag achter de tekst voor leesbaarheid */
+      padding: 2rem;
+      border-radius: 15px;
+      backdrop-filter: blur(5px); /* Maakt de achtergrond achter de tekst wazig */
+      width: 90%;
     }
 
     h1 {
-      margin-bottom: 0.5rem;
-      font-size: 4rem;
-      color: #9dff00; /* Felgroen TBC effect */
+      margin-bottom: 1rem;
+      font-size: 2.5rem; /* Iets kleiner voor verticaal scherm */
+      color: #9dff00;
+      text-shadow: 0 0 15px rgba(157, 255, 0, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     #countdown {
-      font-size: 5rem;
+      font-size: 3.5rem; /* Grote cijfers */
       font-weight: bold;
+      text-shadow: 2px 2px 10px rgba(0,0,0,1);
+      font-variant-numeric: tabular-nums; /* Voorkomt dat cijfers springen */
+    }
+
+    /* Media query voor echte 1080x1920 schermen/mobiel */
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      #countdown { font-size: 2.8rem; }
     }
   </style>
 </head>
 <body>
-  <h1>TBC Classic Countdown</h1>
-  <div id="countdown"></div>
+  <div class="container">
+    <h1>TBC Classic Launch</h1>
+    <div id="countdown"></div>
+  </div>
 
   <script>
-    // Launch datum: 6 februari 2026
     const launchDate = new Date("2026-02-06T00:00:00+01:00");
 
     function updateCountdown() {
@@ -58,8 +83,13 @@
       const minutes = Math.floor((diff / (1000 * 60)) % 60);
       const seconds = Math.floor((diff / 1000) % 60);
 
+      // Gebruik padding om te zorgen dat 1s niet verspringt naar 10s (01)
+      const displayHours = hours.toString().padStart(2, '0');
+      const displayMinutes = minutes.toString().padStart(2, '0');
+      const displaySeconds = seconds.toString().padStart(2, '0');
+
       document.getElementById("countdown").innerText =
-        `${days}d ${hours}u ${minutes}m ${seconds}s`;
+        `${days}d ${displayHours}u ${displayMinutes}m ${displaySeconds}s`;
     }
 
     setInterval(updateCountdown, 1000);
@@ -67,4 +97,3 @@
   </script>
 </body>
 </html>
-
