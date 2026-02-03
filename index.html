@@ -2,80 +2,63 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TBC Classic Countdown</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
       background-color: #050a05;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    /* De container die alles vasthoudt */
     .poster-frame {
       position: relative;
+      /* Jouw formaat */
       width: 1080px;
       height: 1920px;
-      max-width: 95vw; /* Past zich aan aan schermbreedte */
-      max-height: 95vh; /* Past zich aan aan schermhoogte */
+      /* Schaling voor je monitor */
+      max-width: 95vw;
+      max-height: 95vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
       box-shadow: 0 0 50px rgba(0,0,0,0.9);
-      background-color: #111; /* Fallback kleur binnen de box */
+      background: #000;
     }
 
-    /* Het plaatje als echt element in plaats van CSS achtergrond */
-    .poster-image {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-
-    /* De tekstlaag bovenop het plaatje */
-    .overlay {
-      position: relative;
+    .logo-img {
+      /* Hier passen we de size aan naar 'niet schermvullend' zoals gevraagd */
+      width: 80%; 
+      height: auto;
       z-index: 2;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 40px;
-      border-radius: 10px;
-      border: 2px solid #9dff00;
+    }
+
+    .overlay {
+      z-index: 3;
       text-align: center;
-      width: 80%;
+      margin-top: -50px; /* Trekt de tekst iets naar het logo toe */
     }
 
     h1 {
-      margin: 0;
-      font-size: clamp(2rem, 5vw, 4rem);
+      font-size: 3rem;
       color: #9dff00;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      text-shadow: 0 0 20px rgba(0,0,0,1);
     }
 
     #countdown {
-      font-size: clamp(2.5rem, 8vw, 6rem);
+      font-size: 4.5rem;
       font-weight: bold;
-      color: #ffffff;
-      margin-top: 20px;
+      color: white;
+      text-shadow: 0 0 20px rgba(0,0,0,1);
     }
   </style>
 </head>
 <body>
 
   <div class="poster-frame">
-    <img class="poster-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/1080px-Placeholder_view_vector.svg.png" alt="TBC Art" id="tbc-img">
-    
-    <div class="overlay">
-      <h1>TBC Classic</h1>
-      <div id="countdown">Laden...</div>
-    </div>
