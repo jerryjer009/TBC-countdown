@@ -5,23 +5,34 @@
   <title>TBC Classic Countdown</title>
   <style>
     body {
-  background-image: url('https://warcraft.wiki.gg/images/thumb/WoW_BC_Classic_Anniversary_logo.png/2560px-WoW_BC_Classic_Anniversary_logo.png?1e96e6');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-      color: #118171C;
+      /* Gebruik een donkere kleur als fallback */
+      background-color: #0b1e0b; 
+      /* De afbeelding - Let op: Gebruik bij voorkeur een sfeervolle landschapsfoto */
+      background-image: url('https://worldofwarcraft.blizzard.com/static/images/art/burning-crusade-classic/wallpapers/dark-portal-1920x1080.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      
+      color: #f0ead6; /* Gebroken wit voor betere leesbaarheid */
+      font-family: 'Georgia', serif;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      font-size: 3rem;
-      text-align: center;
+      margin: 0;
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.8); /* Maakt tekst leesbaar op drukke achtergrond */
     }
 
     h1 {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       font-size: 4rem;
+      color: #9dff00; /* Felgroen TBC effect */
+    }
+
+    #countdown {
+      font-size: 5rem;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -30,6 +41,7 @@
   <div id="countdown"></div>
 
   <script>
+    // Launch datum: 6 februari 2026
     const launchDate = new Date("2026-02-06T00:00:00+01:00");
 
     function updateCountdown() {
@@ -55,4 +67,3 @@
   </script>
 </body>
 </html>
-
